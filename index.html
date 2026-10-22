@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>おじゃまUFOを動かしてビームで消そう｜ひとつずつ Scratch</title>
+<title>おじゃまUFO｜元の見本で作るシューティング</title>
 <style>
 :root{font-family:"Yu Gothic UI","Meiryo",sans-serif;color:#203047;background:#f3f6fb;font-size:18px;line-height:1.8}*{box-sizing:border-box}body{margin:0}header{background:#fff;border-bottom:1px solid #dce3ed;padding:16px 5%;display:flex;justify-content:space-between;gap:12px;font-size:.8rem}.brand{font-weight:800;color:#2457b9}main{max-width:1000px;margin:auto;padding:30px 24px}h1{font-size:clamp(1.7rem,4vw,2.6rem);line-height:1.4;margin:10px 0 20px}h2{font-size:1.25rem}.intro,.lesson-head{margin-bottom:22px}.eyebrow{color:#3460a5;font-size:.8rem;font-weight:bold;letter-spacing:.1em}.links{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0}a{color:#164fac}.links a{background:white;padding:12px 18px;border:1px solid #b6c9e4;border-radius:12px}.notice,.caption,footer{font-size:.78rem;color:#56657a}.notice{background:#fff7df;padding:16px;border-radius:10px}button{font:inherit;cursor:pointer;border:0;background:#2457b9;color:white;padding:13px 24px;border-radius:12px;font-weight:bold;min-height:48px}button:hover{filter:brightness(.93)}button:focus-visible,a:focus-visible,summary:focus-visible{outline:4px solid #e99919;outline-offset:4px}button:disabled{opacity:.4;cursor:default}.secondary{background:white;color:#2457b9;border:1px solid #b6c9e4}.text-button{background:none;color:#52627a;font-size:.75rem;padding:6px}.progress{display:flex;justify-content:space-between;font-size:.8rem}progress{width:100%;height:10px;accent-color:#2b8c75;margin:8px 0 24px}.visual{background:#fff;border:1px solid #d6e0ed;border-radius:18px;overflow:auto;padding:14px}.visual svg{width:100%;height:auto;min-width:560px;display:block}.check{border-left:5px solid #218771;background:#e9f5f0;padding:18px 22px;margin:22px 0;border-radius:0 12px 12px 0}.check p{margin:4px 0}details{background:#fff;border:1px solid #d8e1ed;border-radius:12px;padding:14px 18px;margin:14px 0}summary{cursor:pointer;font-weight:bold}details p{font-size:.9rem}.navigation{display:flex;justify-content:space-between;gap:12px;margin:26px 0}.step-list{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:14px}.step-list button{background:#eef3fb;color:#263b59;font-size:.78rem;text-align:left;padding:10px}.step-list button[aria-current="step"]{background:#2457b9;color:white}textarea{width:100%;font:inherit;border:1px solid #a3b8cc;border-radius:8px;padding:12px;margin:10px 0}footer{margin-top:35px;border-top:1px solid #d5deea;padding-top:15px}[hidden]{display:none!important}@media(max-width:600px){main{padding:20px 14px}header{flex-direction:column;gap:0}.step-list{grid-template-columns:1fr}.navigation button{padding:12px 15px;font-size:.9rem}.visual{padding:5px}.caption:after{content:" 図が入りきらないときは横に動かして見てください。"}}@media print{header,.navigation,#steps,footer,#intro,.trouble{display:none}.visual svg{min-width:0}details{break-inside:avoid}}
 
@@ -32,19 +32,20 @@ button{background:var(--purple);border:1px solid transparent;border-radius:15px;
 <style>
 .demo-ufo-fall{position:absolute;top:20px;left:calc(50% - 25px);width:50px;height:24px;border-radius:50%;background:#c9a8fc;border-bottom:7px solid #8c6bc3;box-shadow:0 -8px 0 -3px #e4d4ff;animation:ufo-fall 2.4s linear forwards}.demo-player{position:absolute;bottom:12px;left:calc(50% - 13px);width:0;height:0;border-left:13px solid transparent;border-right:13px solid transparent;border-bottom:28px solid #7ad0e4}.demo-caption{position:absolute;bottom:10px;left:12px;font-size:11px;color:#d9f0f5}.demo-stage:after{content:"完成イメージ"}.block-focus svg{max-height:95px}.visual svg text{font-family:"BIZ UDPGothic","Meiryo",sans-serif}@keyframes ufo-fall{to{transform:translateY(215px)}}@media(prefers-reduced-motion:reduce){.demo-ufo-fall{animation:none;top:90px}}
 
+.category-label{border-left:5px solid;padding:8px 12px;background:#f3f7fa;border-radius:0 8px 8px 0;font-size:.78rem;margin-bottom:12px}.category-label span{display:inline-block;width:13px;height:13px;border-radius:50%;margin-right:8px}.demo-actions{display:flex;gap:6px;flex-wrap:wrap}.demo-actions button{font-size:.7rem;padding:9px 12px}.visual svg{min-width:580px}.visual .block-focus svg{min-width:0}#complete svg{min-width:960px}.caption{font-size:.72rem}@media print{#complete svg{min-width:0}}
 </style>
 <header><span class="brand">ひとつずつ Scratch</span><span>シューティング ／ おじゃまUFO編</span></header>
 <main>
-<section id="intro" class="intro"><p class="eyebrow">MISSION 02 ／ 今日のゴール</p><h1>おじゃまUFOを<br>ビームで消そう。</h1><p>出る場所を乱数で決める → 下へ動かす → ビームとの接触を調べる。<br>当たったUFOが消えるところまで、1つずつ作ろう。</p>
-<section class="mission-preview"><div class="demo-stage" id="demoStage"><span class="demo-caption">ビームが触れると、UFOが消える</span><div class="demo-player"></div></div><div class="preview-copy"><p class="eyebrow">まず、できあがりを見よう</p><h2>1秒ごとに、<br>新しいUFOが登場。</h2><p>左右のいろいろな場所から出します。<br>ビームに触れたUFOのコピーは消えます。</p><button id="tryUfo" type="button">ビームで消える動きを見る ↑</button><p id="demoStatus" class="caption" role="status">ボタンでUFOにビームが当たる見本を見られます。</p></div></section>
-<div class="learning-route"><span><b>01</b>出す合図</span><span><b>02</b>コピーを作る</span><span><b>03</b>下へ動かす</span><span><b>04</b>当たり判定・保存</span></div>
+<section id="intro" class="intro"><p class="eyebrow">MISSION 02 ／ 今日のゴール</p><h1>おじゃまUFOを作り、<br>得点とライフをつなごう。</h1><p>0.8秒ごとに出す → 3つの条件まで動かす → ライフ・スコアを変える。<br>元の完成見本と同じしくみを、1つずつ組み立てよう。</p>
+<section class="mission-preview"><div class="demo-stage" id="demoStage"><span class="demo-caption">動きを選んで、結果を見よう</span><div class="demo-player"></div></div><div class="preview-copy"><p class="eyebrow">まず、できあがりのしくみを見よう</p><h2>当たった相手で、<br>変わる数がちがう。</h2><p>ビームならスコア＋1。プレイヤーならライフ−1。<br>ライフが1未満なら「ゲームオーバー」。</p><div class="demo-actions"><button id="demoBeam" type="button">ビームを当てる</button><button id="demoPlayer" type="button">プレイヤーに当たる</button><button id="demoMiss" type="button">下まで通す</button></div><p id="demoStatus" class="caption" role="status">見本の実演です。Scratchの作品とは別です。</p></div></section>
+<div class="learning-route"><span><b>01</b>0.8秒おきに出す</span><span><b>02</b>乱数と3条件</span><span><b>03</b>ライフと得点</span><span><b>04</b>ゲームオーバー・保存</span></div>
 <div class="links"><a href="https://scratch.mit.edu/projects/editor/" target="_blank" rel="noopener noreferrer">Scratchを別タブで開く ↗</a><a href="data:application/octet-stream;base64,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" download="シューティングスターター.sb3">初めての人：スターターを保存 ↓</a></div>
 <p class="notice">ビーム編で発射できるようになった作品を開いて続けます。ビームが出ることを確かめてから始めましょう。新しくスターターを読み込むと今の作品が置き換わります。付属スターターはビームもUFOも追加前のものです。</p>
 <button id="start">UFOガイドをはじめる →</button>
 <details><summary>準備：作品の開き方</summary><ol><li>Scratchを開きます。</li><li>「ファイル」→「コンピューターから読み込む」を押します。今の作品が必要なら先に保存します。</li><li>前時に保存した .sb3 を選びます。初めてなら上からスターターを保存して選びます。</li><li>右下に「おじゃまUFO」があるか確認します。</li></ol><p>このガイドは漢字表示のScratch用です。左上の地球マークから「日本語」を選べます。すでにUFOが動く作品なら、処理を二重に作らず見比べてください。</p></details>
-<details><summary>今回作るところ</summary><p>今回は「UFOが一定間隔で出る・下へ進む・ビームに当たると消える」まで作ります。ビーム自体は当たっても進み続けます。スコア・ライフ・ゲームオーバーの処理はまだ追加しません。</p></details></section>
+<details open><summary>元の見本と同じ処理を作ります</summary><p>出現前に0.8秒待ち、x座標を-210〜210の乱数、y座標を170にします。y座標が-155未満、プレイヤーとの接触、ビームとの接触のどれかで移動を終えます。移動中はy座標を-5ずつ変え、0.03秒待ちます。</p><p>その後、プレイヤーに触れていればライフを-1し、ライフが1未満ならゲームオーバーを送ります。ビームに触れていればスコアを1増やし、最後にそのクローンを削除します。</p><p class="notice">以前の簡略版を作った人は、今の作品を別名で保存してから組み替えます。「旗→隠す」は残し、UFOの新旧の処理を二重に動かさないよう確認しましょう。この版の進み具合は別に保存します。</p></details></section>
 <section id="lesson" hidden>
-<div class="progress"><span id="count"></span><span id="saved" role="status"></span></div><progress id="bar" max="52" value="0"></progress>
+<div class="progress"><span id="count"></span><span id="saved" role="status"></span></div><progress id="bar" max="72" value="0"></progress>
 <div class="lesson-tools"><a href="https://scratch.mit.edu/projects/editor/" target="_blank" rel="noopener noreferrer">Scratchを開く ↗</a></div>
 <div class="lesson-head"><p id="phase" class="eyebrow"></p><h1 id="title" tabindex="-1"></h1><p id="instruction"></p></div>
 <aside class="coach-note"><span class="coach-avatar"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" role="img" aria-label="黒い流し髪に紺のジャケットとボーダーシャツを着た解説キャラクター"><defs><clipPath id="teacherFrame"><rect width="160" height="180" rx="28"/></clipPath></defs><g clip-path="url(#teacherFrame)"><rect width="160" height="180" fill="#dff0f1"/><circle cx="84" cy="71" r="58" fill="#f7fcf9"/><path d="M10 180l8-33q4-14 35-20h53q34 7 38 23l8 30" fill="#23384f"/><path d="M61 121h35l9 59H53z" fill="#f8f4e9"/><path d="M59 141h40v7H58m-2 11h46v7H55m-1 10h50v7H53" fill="#30465a"/><path d="M65 102v24q14 15 29 0v-25" fill="#eabfa0"/><path d="M60 124l-14 7 6 18-10 8 12 23h10l4-47m31-9 14 7-6 18 10 8-12 23H94l-4-47" fill="#314b65"/><path d="M39 68q-7-44 39-49 46-2 47 41l-4 33q-6 29-37 34-27-2-38-28z" fill="#f2cdb0"/><path d="M41 75q-14-7-12 8 1 13 15 15m76-23q13-6 12 7-1 12-13 16" fill="#ebbd9e"/><g transform="translate(160 0) scale(-1 1)"><path d="M37 88q-13-21-8-44Q33 9 72 11q31-5 46 16 15 16 8 46l-8 13-3-35q-14 12-32 17l15-24Q79 64 51 72l-4 23-10-7" fill="#242a33"/><path d="M37 55q14-27 47-29M53 57q27-27 51-24M72 57q25-16 35-26" fill="none" stroke="#404651" stroke-width="3" stroke-linecap="round"/></g><path d="M56 81q8-5 16-2m21-2q8-3 14 2" fill="none" stroke="#4d3e37" stroke-width="3" stroke-linecap="round"/><path d="M58 89q6-5 12 0m24-1q5-5 10 0" fill="none" stroke="#302e2e" stroke-width="3" stroke-linecap="round"/><path d="M83 88l-3 11 5 2" fill="none" stroke="#c18e73" stroke-width="2" stroke-linecap="round"/><path d="M72 108q12 9 23-2" fill="#fff5e9" stroke="#a26c59" stroke-width="2" stroke-linecap="round"/><ellipse cx="56" cy="99" rx="8" ry="4" fill="#e9a99b" opacity=".45"/><ellipse cx="107" cy="97" rx="7" ry="4" fill="#e9a99b" opacity=".4"/></g></svg></span><div class="coach-speech"><span class="coach-name">ヒント</span><p id="coachMessage"></p></div></aside>
@@ -53,26 +54,26 @@ button{background:var(--purple);border:1px solid transparent;border-radius:15px;
 <details id="help"><summary>うまくいかないとき</summary><p id="hint"></p></details>
 <nav class="navigation"><button id="back" class="secondary">← ひとつ前</button><button id="next">できた！ 次へ →</button></nav>
 <details><summary>ステップ一覧から選ぶ</summary><div id="steps" class="step-list"></div></details>
-<details><summary>完成したブロックを見たい</summary><div id="complete" class="visual"></div><p>左：元のUFOは隠したまま、1秒ごとにコピーを作ります。右：コピーを上に置いて表示し、70回下へ動かして消します。左下：もう1つの「クローンされたとき」で、動いている間にビームとの接触を調べます。「1秒待つ」と「0.03秒待つ」の場所の違いに注目。</p></details>
+<details><summary>完成したブロックを見たい</summary><div id="complete" class="visual"></div><p>左：0.8秒待ってコピーを作ります。右：位置・表示→条件まで移動→プレイヤーに触れた場合の処理→ビームに触れた場合の処理→削除です。別の「クローンされたとき」で当たり判定する簡略版は使いません。</p></details>
 <section class="trouble"><h2>困ったところから探そう</h2>
-<details><summary>UFOが出ない</summary><p>右下の「おじゃまUFO」を選んで確認します。「ゲームスタートを受け取ったとき」になっていますか？ 緑の旗の後に、作品内の「スタート」を押します。「クローンされたとき → 位置を決める → 表示する」も確認します。</p></details>
-<details><summary>当たっていないのに消える・上へ飛ぶ</summary><p>当たり判定側の削除は「もし」の内側です。移動側の「このクローンを削除する」は70回繰り返すの外側です。下へ動かす数字は「-5」。出発点のy座標はプラスの170です。</p></details>
-<details><summary>大量に出る・重くなる</summary><p>赤い停止ボタンで止めます。最初の「ずっと」の中に、「クローンを作る → 1秒待つ」があるか確認します。毎回、緑の旗 → スタート1回の順でやり直します。</p></details>
-<details><summary>とても遅い・下に残る</summary><p>「70回繰り返す」の中は「y座標を-5ずつ変える → 0.03秒待つ」です。1秒のままなら書きかえます。「このクローンを削除する」は囲いの外の下です。実際の速さは端末にもよります。</p></details>
-<details><summary>ビームが当たっても消えない</summary><p>「おじゃまUFO」に新しい「クローンされたとき → ずっと → もし ビームに触れた なら → このクローンを削除する」があるか確認します。削除は「もし」の内側です。「マウスのポインター」や「プレイヤー」のままになっていませんか？ ビームが出ていることも確認しましょう。</p></details></section>
-<section id="finish" hidden class="check"><h2>できた！ 今度は遊びやすさを工夫しよう。</h2><p>「UFOが多すぎる」「動きが速すぎる」など、困ったことを1つ見つけよう。</p><label>何を変える？ なぜ？<textarea id="reflection" rows="3" placeholder="例：UFOが多すぎるので、コピーを作った後の待ち時間を2秒にする。"></textarea></label>
-<p>まずは1か所だけ変更して、変更前と比べます。コピーを出す間隔と、移動する速さは別々に調整できます。</p><button id="export" class="secondary">ふり返りと進み具合を保存</button>
-<details><summary>どうして同じ「クローンされたとき」が2つあるの？</summary><p>コピーが作られると、移動のかたまりと当たり判定のかたまりが同時に動きます。「このクローンを削除する」でそのコピーが消えると、そのコピーの両方の処理も止まります。元のUFOの生成処理は続くので、次のコピーが出ます。</p></details><details><summary>UFOが同じ場所からしか出ない</summary><p>「クローンされたとき」の下の青い位置ブロックを確認します。x座標の入力欄に「-180から180までの乱数」を入れ、y座標は170のままにします。乱数を単独で置くだけでは位置は変わりません。同じ場所が続くこともあるので、数回出して確かめましょう。</p></details></section></section>
+<details><summary>以前の「70回繰り返す」の作品から直したい</summary><p>作品を別名で保存します。UFOの生成は「ゲームスタート→ずっと→0.8秒待つ→クローンを作る」にそろえます。クローンの動きは本編の条件付き繰り返しに組み替えます。別の「クローンされたとき→ずっと→ビームなら削除」は外します。新旧両方を残すと、得点処理の前に消えることがあります。</p></details>
+<details><summary>UFOが出ない・左右の場所が変わらない</summary><p>旗→スタートを1回押します。x座標の入力欄の中に「-210から210までの乱数」があるか見ます。y座標は170。「表示する」も確認します。同じ乱数が続くこともあるので、何回か確かめましょう。</p></details>
+<details><summary>UFOがすぐ消える・止まらない</summary><p>条件は「（y座標 ＜ -155 または プレイヤーに触れた）または ビームに触れた」です。比較の向きとマイナス、2つの「または」を確認します。ビームのプログラムの「y ＞ 175」と取り違えないようにします。</p></details>
+<details><summary>ライフが減らない・増える</summary><p>繰り返しの外の「もし プレイヤーに触れた なら」の内側に、「ライフを-1ずつ変える」を置きます。「1にする」ではありません。初期スターターの旗の処理ではライフを3に戻します。</p></details>
+<details><summary>ライフが0でもゲームオーバーにならない</summary><p>ライフを減らした後の、小さい「もし ライフ ＜ 1 なら」の内側に「ゲームオーバーを送る」を置きます。変数名と送るメッセージ名を確認します。</p></details>
+<details><summary>ビームが当たってもスコアが増えない</summary><p>「もし ビームに触れた なら」はプレイヤー用のもしの外、その下です。中には「スコアを1ずつ変える」。クローン削除はさらにその外側の最後です。簡略版の別スクリプトで先に削除していないかも確認します。</p></details>
+<details><summary>ゲームオーバーの後にも処理が続く</summary><p>この見本はゲームオーバーの合図を送りますが、UFO生成の「ずっと」を止める命令は含んでいません。試し終わったら赤い停止ボタンで止めます。ゲーム全体をどう止めるかは、元の見本の確認後に別の改善として検討します。</p></details></section>
+<section id="finish" hidden class="check"><h2>できた！ 元の見本と動きを比べよう。</h2><p>①下まで来たとき ②プレイヤーに当たったとき ③ビームに当たったとき。3通りを確かめてから改善を考えます。</p><label>何を変える？ なぜ？<textarea id="reflection" rows="3" placeholder="例：UFOが出る間隔を少し長くして、初めて遊ぶ人も避けやすくしたい。"></textarea></label><p>まずは見本と同じ動きを完成させ、変更は1か所ずつ。変える前と後を比べて、理由を説明しよう。</p><button id="export" class="secondary">ふり返りと進み具合を保存</button></section></section>
 <footer>進み具合はこのブラウザに保存します。ビーム編の進み具合とは別です。自動送信はありません。Scratch作品は別途保存しましょう。<button id="reset" class="text-button">このガイドを最初からやり直す</button></footer>
 </main><script>
-const categories = {event:['イベント','#b77a00'],control:['制御','#ba6b00'],motion:['動き','#3373d3'],looks:['見た目','#8154cf'],sensing:['調べる','#187d99'],operators:['演算','#328329']};
-const lessons = [
+const categories={event:['イベント','#b77a00'],control:['制御','#ba6b00'],motion:['動き','#3373d3'],looks:['見た目','#8154cf'],operators:['演算','#328329'],sensing:['調べる','#187d99'],data:['変数','#c47700']};
+const lessons=[
   [
     "準備",
     "「おじゃまUFO」を選ぼう",
-    "右下のスプライト一覧で「おじゃまUFO」をクリックします。",
-    "「おじゃまUFO」に枠がつきましたか？",
-    "今回はUFOではなくUFOに命令を書きます。",
+    "右下のスプライト一覧の「おじゃまUFO」をクリックします。",
+    "UFOが選ばれていますか？",
+    "ビーム編でビームが発射できる作品を開いて続けます。初期スターターはビーム追加前です。",
     "sprite",
     null,
     0
@@ -81,8 +82,8 @@ const lessons = [
     "準備",
     "「コード」を開こう",
     "左上の「コード」をクリックします。",
-    "「旗が押されたとき → 隠す」がありますか？",
-    "この2つはスターターに入っています。消さずに残します。すでにUFOのプログラムがある人は、同じ処理を二重に作らず見比べましょう。",
+    "「旗が押されたとき → 隠す」が残っていますか？",
+    "前の簡略版で作った人は、作品を別名保存してから、本編と違うUFOの処理を外して組み替えます。新旧の生成処理を同時に残さないようにします。",
     "code",
     null,
     0
@@ -90,29 +91,19 @@ const lessons = [
   [
     "出す合図",
     "黄色の「イベント」を押そう",
-    "左端の黄色い丸と「イベント」の文字をクリックします。",
+    "左端の「イベント」をクリックします。",
     "黄色いブロックが並びましたか？",
-    "色だけでなく、文字も見て確かめます。",
+    "ゲームのスタートの合図を使います。",
     "event",
     null,
     0
   ],
   [
     "出す合図",
-    "「受け取ったとき」を運ぼう",
-    "「メッセージ1を受け取ったとき」を、中央の空いている場所へドラッグします。",
-    "元からあるかたまりとは離して置けましたか？",
-    "押したまま動かして、空いているところで指を離します。最初のメッセージ名が違っても大丈夫です。",
-    "event",
-    "メッセージ1 ▼ を受け取ったとき",
-    1
-  ],
-  [
-    "出す合図",
-    "「▼」を押そう",
-    "今置いたブロックの、メッセージ名の横の「▼」をクリックします。",
-    "メッセージの一覧が開きましたか？",
-    "ブロックを運ぶ操作ではありません。小さな三角を押します。",
+    "「受け取ったとき」を置こう",
+    "「メッセージ1を受け取ったとき」を中央の空いている場所へ運びます。",
+    "元からある旗のかたまりとは離して置けましたか？",
+    "最初に表示されるメッセージ名は違っていても大丈夫です。",
     "event",
     "メッセージ1 ▼ を受け取ったとき",
     1
@@ -120,549 +111,749 @@ const lessons = [
   [
     "出す合図",
     "「ゲームスタート」を選ぼう",
-    "開いた一覧から「ゲームスタート」を選びます。",
+    "今置いたブロックの「▼」を押し、一覧の「ゲームスタート」を選びます。",
     "「ゲームスタートを受け取ったとき」になりましたか？",
-    "「ショット」ではありません。作品のスタートボタンが、この合図を送ります。",
+    "作品のスタートボタンが送る合図です。",
     "event",
     "ゲームスタート ▼ を受け取ったとき",
     2
   ],
   [
-    "何度も出す",
+    "一定間隔で出す",
     "オレンジ色の「制御」を押そう",
     "左端の「制御」をクリックします。",
     "オレンジ色のブロックが並びましたか？",
-    "「制御」の文字を見て選びます。",
+    "繰り返しと待ち時間を作ります。",
     "control",
     null,
     2
   ],
   [
-    "何度も出す",
+    "一定間隔で出す",
     "「ずっと」をつなごう",
-    "「ずっと」を、「ゲームスタートを受け取ったとき」のすぐ下につなぎます。",
-    "コの字のようなブロックがつながりましたか？",
-    "「10回繰り返す」ではなく、回数のない「ずっと」です。",
+    "「ずっと」を「ゲームスタートを受け取ったとき」の下につなぎます。",
+    "コの字のブロックがつながりましたか？",
+    "回数を決める繰り返しではありません。",
     "control",
     "ずっと",
     3
   ],
   [
-    "何度も出す",
-    "「クローンを作る」を探そう",
-    "「制御」のブロック一覧を下へスクロールし、「自分自身のクローンを作る」を探します。",
-    "見つけるだけでOKです。",
-    "左側のブロック一覧の上でスクロールします。クローンはUFOのコピーです。",
+    "一定間隔で出す",
+    "「1秒待つ」を中に入れよう",
+    "「1秒待つ」を「ずっと」の内側へ入れます。",
+    "待つブロックがオレンジの囲いの中ですか？",
+    "元の見本は、先に待ってからコピーを作る順番です。",
     "control",
-    "自分自身 ▼ のクローンを作る",
-    3
-  ],
-  [
-    "何度も出す",
-    "「ずっと」の中に入れよう",
-    "「自分自身のクローンを作る」を、「ずっと」のくぼみの中へ運びます。",
-    "ブロックが「ずっと」に囲まれていますか？",
-    "くぼみの中に白い影が出てから離します。外側ではありません。",
-    "control",
-    "自分自身 ▼ のクローンを作る",
+    "1 秒待つ",
     4
   ],
   [
-    "何度も出す",
-    "「1秒待つ」を中につなごう",
-    "「制御」の上の方の「1秒待つ」を、クローンを作るブロックのすぐ下につなぎます。",
-    "2つとも「ずっと」の中に入っていますか？",
-    "待つ命令がないと、短時間に大量のコピーができてしまいます。数字は1のままでOKです。",
+    "一定間隔で出す",
+    "待ち時間を「0.8」にしよう",
+    "白い数字の1をクリックして「0.8」にします。",
+    "「0.8秒待つ」になりましたか？",
+    "0、点、8です。0.8秒おきに新しいUFOが生まれます。",
     "control",
-    "1 秒待つ",
+    "0.8 秒待つ",
     5
   ],
   [
-    "コピーの仕事",
-    "「クローンされたとき」を置こう",
-    "「制御」の下の方の「クローンされたとき」を、中央の別の空いている場所へ運びます。",
-    "前のかたまりとは離して置けましたか？",
-    "ここからは、生まれたコピー1つずつの動きを作ります。",
+    "一定間隔で出す",
+    "「クローンを作る」を探そう",
+    "「制御」の一覧を下へスクロールして、「自分自身のクローンを作る」を探します。",
+    "コピーを作るブロックを見つけましたか？",
+    "まだ探すだけで大丈夫です。",
+    "control",
+    "自分自身 ▼ のクローンを作る",
+    5
+  ],
+  [
+    "一定間隔で出す",
+    "「0.8秒待つ」の下につなごう",
+    "「自分自身のクローンを作る」を「0.8秒待つ」の下へ、ずっとの内側につなぎます。",
+    "「待つ → コピーを作る」の順ですか？",
+    "「ずっと」の外に出さないようにします。",
+    "control",
+    "自分自身 ▼ のクローンを作る",
+    6
+  ],
+  [
+    "コピーの出発点",
+    "「クローンされたとき」を別に置こう",
+    "「制御」の「クローンされたとき」を、別の空いている場所へ運びます。",
+    "生成のかたまりから離して置けましたか？",
+    "これから、コピー1つずつの仕事を作ります。",
     "control",
     "クローンされたとき",
-    6
+    7
   ],
   [
-    "出発する場所",
+    "コピーの出発点",
     "青い「動き」を押そう",
-    "左端の一番上の「動き」をクリックします。",
+    "左端の「動き」をクリックします。",
     "青いブロックが並びましたか？",
-    "ステージを選ぶと動きが出ません。右下の「おじゃまUFO」を選び直します。",
+    "座標を決めるブロックを使います。",
     "motion",
     null,
-    6
-  ],
-  [
-    "出発する場所",
-    "「x座標を〜、y座標を〜にする」をつなごう",
-    "「x座標を0、y座標を0にする」の形のブロックを、「クローンされたとき」の下につなぎます。",
-    "xとy、2つの数字があるブロックです。",
-    "数字は今のUFOの位置によって違うことがあります。「〜秒で〜にする」ではありません。",
-    "motion",
-    "x座標を 0、y座標を 0 にする",
     7
   ],
   [
-    "出発する場所",
-    "x座標を「0」にしよう",
-    "今つないだ青いブロックの、x座標の数字をクリックして「0」にします。",
-    "左側の数字が0になりましたか？",
-    "xは左右の位置です。まず画面の真ん中から出すようにします。",
+    "コピーの出発点",
+    "x座標とy座標のブロックをつなごう",
+    "「x座標を〜、y座標を〜にする」を「クローンされたとき」の下につなぎます。",
+    "数字の欄が2つある青いブロックですか？",
+    "「〜秒で〜にする」ではありません。",
     "motion",
     "x座標を 0、y座標を 0 にする",
-    7
+    8
   ],
   [
-    "出発する場所",
+    "コピーの出発点",
     "y座標を「170」にしよう",
-    "同じブロックの、y座標の数字をクリックして「170」にします。",
-    "「x座標を0、y座標を170にする」になりましたか？",
-    "yは上下の位置です。170は画面の上の方です。まだマイナスはつけません。",
+    "青いブロックのy座標の数字をクリックして「170」にします。",
+    "右側のy座標が170ですか？",
+    "画面の上から出発させます。x座標は次に決めます。",
     "motion",
     "x座標を 0、y座標を 170 にする",
-    8
+    9
   ],
   [
-    "出る場所を変える",
+    "左右の位置を選ぶ",
     "緑の「演算」を押そう",
-    "左端の緑色の丸の「演算」をクリックします。",
+    "左端の「演算」をクリックします。",
     "緑色のブロックが並びましたか？",
-    "「調べる」より下にあります。左端を下へ見て、文字を探します。",
+    "左右の位置には乱数を使います。",
     "operators",
     null,
-    8
+    9
   ],
   [
-    "出る場所を変える",
-    "「1から10までの乱数」を探そう",
-    "「演算」から「1から10までの乱数」という、両端が丸いブロックを探します。",
-    "数字を2つ入れられる緑のブロックです。",
-    "乱数は、指定した範囲から数を選ぶしくみです。毎回違うとは限らず、同じ数が続くこともあります。",
+    "左右の位置を選ぶ",
+    "「1から10までの乱数」を置こう",
+    "丸い「1から10までの乱数」を中央の空いている場所へ運びます。",
+    "単独の緑のブロックを置けましたか？",
+    "後でx座標の入力欄へ入れます。",
     "operators",
     "1 から 10 までの乱数",
-    8
+    9
   ],
   [
-    "出る場所を変える",
-    "乱数のブロックを空いている場所へ置こう",
-    "緑の「1から10までの乱数」を、中央の空いているところへ運びます。",
-    "まだ青いブロックへ入れず、単独で置けましたか？",
-    "数字を書きかえやすいように、いったん空いている場所に置きます。",
+    "左右の位置を選ぶ",
+    "左の数字を「-210」にしよう",
+    "緑の乱数の左の1をクリックし、「-210」にします。",
+    "左にマイナスが付いていますか？",
+    "見本と同じ、左側の出現位置の限界です。",
     "operators",
-    "1 から 10 までの乱数",
-    8
+    "-210 から 10 までの乱数",
+    9
   ],
   [
-    "出る場所を変える",
-    "左の「1」を「-180」にしよう",
-    "今置いた緑のブロックの左の数字をクリックし、「-180」と入力します。",
-    "左の数字にマイナスが付きましたか？",
-    "x座標のマイナスは左です。0より小さい数も選べるようにします。",
+    "左右の位置を選ぶ",
+    "右の数字を「210」にしよう",
+    "右の10をクリックし、「210」にします。",
+    "「-210から210までの乱数」ですか？",
+    "乱数では同じ数が続くこともあります。",
     "operators",
-    "-180 から 10 までの乱数",
-    8
+    "-210 から 210 までの乱数",
+    9
   ],
   [
-    "出る場所を変える",
-    "右の「10」を「180」にしよう",
-    "緑のブロックの右の数字をクリックし、「180」と入力します。",
-    "「-180から180までの乱数」になりましたか？",
-    "左端と右端を少し内側にして、UFOが画面からはみ出しにくくします。作品の大きさに応じて調整できます。",
+    "左右の位置を選ぶ",
+    "乱数をx座標の入力欄へ入れよう",
+    "丸い乱数を、青い位置ブロックの左のx座標の入力欄へ入れます。",
+    "xが乱数、yが170のままですか？",
+    "下につなぐのではなく、入力欄の中へ重ねます。",
     "operators",
-    "-180 から 180 までの乱数",
-    8
-  ],
-  [
-    "出る場所を変える",
-    "緑の乱数を、x座標の「0」に入れよう",
-    "「クローンされたとき」の下の青い位置ブロックを見ます。緑の乱数を、x座標の白い「0」の入力欄へ重ねて離します。",
-    "x座標の数字が緑のブロックに置き換わり、y座標は170のままですか？",
-    "青いブロックの下につなぐのではありません。左側のx座標の入力欄へ入れます。y座標へ入れないようにしましょう。",
-    "operators",
-    "-180 から 180 までの乱数",
-    8,
-    true
+    "-210 から 210 までの乱数",
+    10
   ],
   [
     "コピーを見せる",
     "紫の「見た目」を押そう",
     "左端の「見た目」をクリックします。",
     "紫色のブロックが並びましたか？",
-    "「動き」の下にあります。",
+    "コピーだけを表示します。",
     "looks",
     null,
-    8,
-    true
+    10
   ],
   [
     "コピーを見せる",
     "「表示する」をつなごう",
-    "「見た目」の一覧を下へスクロールして、「表示する」を青いブロックの下につなぎます。",
-    "位置を決めてから表示する順です。",
-    "元のUFOは隠したままです。生まれたコピーだけを表示します。",
+    "「見た目」の「表示する」を青い位置ブロックの下につなぎます。",
+    "位置を決める → 表示するの順ですか？",
+    "元からある旗の下の「隠す」は残します。",
     "looks",
     "表示する",
-    9,
-    true
+    11
   ],
   [
-    "下へ動かす",
-    "「制御」に戻ろう",
-    "左端のオレンジ色の「制御」をクリックします。",
-    "オレンジ色のブロックが並びましたか？",
-    "今度は「ずっと」ではなく、回数を決めて動かします。",
+    "移動を終える条件",
+    "「制御」を押そう",
+    "左端の「制御」をクリックします。",
+    "「〜まで繰り返す」が見つかりますか？",
+    "回数ではなく条件で移動を終えます。",
     "control",
     null,
-    9,
-    true
+    11
   ],
   [
-    "下へ動かす",
-    "「10回繰り返す」をつなごう",
-    "「10回繰り返す」を、「表示する」の下につなぎます。",
-    "数字のあるコの字のブロックです。",
-    "この繰り返しは、コピーの動きを作るかたまりにつなぎます。",
+    "移動を終える条件",
+    "「〜まで繰り返す」をつなごう",
+    "「〜まで繰り返す」を「表示する」の下につなぎます。",
+    "上に六角形の穴があるコの字ですか？",
+    "前の簡略版の「70回繰り返す」とは違います。",
     "control",
-    "10 回繰り返す",
-    10,
-    true
+    "◇ まで繰り返す",
+    12
   ],
   [
-    "下へ動かす",
-    "回数を「70」にしよう",
-    "白い丸の10をクリックし、消して「70」と入力します。",
-    "「70回繰り返す」になりましたか？",
-    "上の170から、5ずつ70回下へ動くと、下の-180まで進みます。",
-    "control",
-    "70 回繰り返す",
-    11,
-    true
+    "条件を3つつなぐ",
+    "「演算」を押そう",
+    "左端の「演算」をクリックします。",
+    "「または」が見つかりますか？",
+    "今回は条件を3つつなぐので、「または」を2つ使います。",
+    "operators",
+    null,
+    12
   ],
   [
-    "下へ動かす",
-    "「動き」に戻ろう",
-    "左端の青い「動き」をクリックします。",
+    "条件を3つつなぐ",
+    "1つ目の「または」を穴へ入れよう",
+    "緑の「または」を、繰り返しの上の六角形の穴へ入れます。",
+    "左右に空の穴がある条件が入りましたか？",
+    "「かつ」ではありません。",
+    "operators",
+    "◇ または ◇",
+    13
+  ],
+  [
+    "条件を3つつなぐ",
+    "2つ目の「または」を左の穴へ入れよう",
+    "一覧からもう1つ「または」を運び、最初の「または」の左の穴へ入れます。",
+    "左側にさらに2つの穴、右側に1つの穴がありますか？",
+    "これで合計3つの条件を入れられます。全体を置き換えず、左の穴の内側へ入れます。",
+    "operators",
+    "◇ または ◇",
+    14
+  ],
+  [
+    "画面の下まで来たか",
+    "「＜」を内側の左の穴へ入れよう",
+    "「演算」の「〜 ＜ 50」を、内側の「または」の左の穴へ入れます。",
+    "「＜」の右に、まだ2つの条件の穴が残っていますか？",
+    "「＞」ではありません。y座標が小さくなったか調べます。",
+    "operators",
+    "○ ＜ 50",
+    15
+  ],
+  [
+    "画面の下まで来たか",
+    "「動き」を押そう",
+    "左端の「動き」をクリックします。",
     "青いブロックが並びましたか？",
-    "上下の動きなので、y座標のブロックを使います。",
+    "動かす命令ではなく、丸い「y座標」を使います。",
     "motion",
     null,
-    11,
-    true
+    15
   ],
   [
-    "下へ動かす",
-    "「y座標を10ずつ変える」を中へ入れよう",
-    "「y座標を10ずつ変える」を、「70回繰り返す」のくぼみの中へ運びます。",
-    "青いブロックがオレンジ色に囲まれていますか？",
-    "外の下ではありません。内側に白い影が出たら離します。",
+    "画面の下まで来たか",
+    "丸い「y座標」を比較の左に入れよう",
+    "「動き」の下の方にある丸い「y座標」を、「＜」の左の入力欄へ入れます。",
+    "「y座標 ＜ 50」ですか？",
+    "丸い「y座標」を運びます。",
     "motion",
-    "y座標を 10 ずつ変える",
-    12,
-    true
+    "y座標",
+    16
   ],
   [
-    "下へ動かす",
-    "「10」を「-5」にしよう",
-    "今入れたブロックの10をクリックし、消して「-5」と入力します。",
-    "数字の前に「-」がついていますか？",
-    "5だけだと上へ動きます。下へ進めたいので、マイナス5です。",
-    "motion",
-    "y座標を -5 ずつ変える",
-    13,
-    true
+    "画面の下まで来たか",
+    "右の数字を「-155」にしよう",
+    "「＜」の右の数字をクリックし、「-155」にします。",
+    "「y座標 ＜ -155」ですか？",
+    "マイナスを忘れないようにします。",
+    "operators",
+    "y座標 ＜ -155",
+    17
   ],
   [
-    "速さを整える",
-    "「制御」を押そう",
-    "左端のオレンジ色の「制御」をクリックします。",
-    "「1秒待つ」が見つかりましたか？",
-    "ここでは、コピーを出す間隔とは別に、動きの速さを整えます。",
-    "control",
-    "1 秒待つ",
-    13,
-    true
-  ],
-  [
-    "速さを整える",
-    "動かすブロックの下に「1秒待つ」を入れよう",
-    "新しい「1秒待つ」を、「y座標を-5ずつ変える」のすぐ下につなぎます。",
-    "青とオレンジの2つが「70回繰り返す」の中です。",
-    "最初の「ずっと」に入れた待つブロックは動かしません。新しくもう1つ持ってきます。",
-    "control",
-    "1 秒待つ",
-    14,
-    true
-  ],
-  [
-    "速さを整える",
-    "待つ時間を「0.03」にしよう",
-    "今入れた「1秒待つ」の1をクリックして、「0.03」にします。",
-    "「0.03秒待つ」になりましたか？",
-    "半角で、0、点、0、3です。1秒のままだと、とてもゆっくり動きます。",
-    "control",
-    "0.03 秒待つ",
-    15,
-    true
-  ],
-  [
-    "コピーを片づける",
-    "「このクローンを削除する」を探そう",
-    "「制御」の一覧を下へスクロールして、「このクローンを削除する」を探します。",
-    "下にブロックをつなぐ出っ張りがない形です。",
-    "まだ探すだけで大丈夫です。元のUFOではなく、コピーを消す命令です。",
-    "control",
-    "このクローンを削除する",
-    15,
-    true
-  ],
-  [
-    "コピーを片づける",
-    "繰り返しの外の下につなごう",
-    "「このクローンを削除する」を、「70回繰り返す」の外側のいちばん下につなぎます。",
-    "削除はオレンジ色の囲いの外です。",
-    "中に入れると、5だけ動いたところですぐ消えます。70回が終わってから消す順番です。",
-    "control",
-    "このクローンを削除する",
-    16,
-    true
-  ],
-  [
-    "試してみよう",
-    "旗 → スタートを押そう",
-    "緑の旗を押してから、作品の画面の「スタート」を1回クリックします。",
-    "UFOが左右のいろいろな場所から出て、下へ進みますか？",
-    "このガイドではUFOに当てても消えません。当たり判定は次の課題です。",
-    "play",
-    null,
-    16,
-    true
-  ],
-  [
-    "試してみよう",
-    "赤い停止ボタンで止めよう",
-    "Scratchの緑の旗の横にある、赤い停止ボタンを押します。",
-    "新しいUFOが出なくなりましたか？",
-    "やり直すときは、旗 → スタートの順です。スタートを何度も押すと出す処理が重なることがあります。",
-    "play",
-    null,
-    16,
-    true
-  ],
-  [
-    "当たり判定",
-    "UFOを選んだまま、別のかたまりを作ろう",
-    "右下の「おじゃまUFO」を選びます。これまでの移動のブロックは、そのまま残します。",
-    "今までの2つのかたまりと「旗→隠す」が残っていますか？",
-    "ビームが発射できる前時の作品を使います。付属の初期スターターだけでは、まだビームは出ません。",
-    "sprite",
-    null,
-    16,
-    true
-  ],
-  [
-    "当たり判定",
-    "「制御」を押そう",
-    "左端のオレンジ色の「制御」をクリックします。",
-    "オレンジ色のブロックが並びましたか？",
-    "下の方にある「クローンされたとき」を使います。",
-    "control",
-    null,
-    16,
-    true
-  ],
-  [
-    "当たり判定",
-    "もう1つ「クローンされたとき」を置こう",
-    "新しい「クローンされたとき」を、空いている場所へ運びます。",
-    "移動用とは別の「クローンされたとき」がありますか？",
-    "コピーが生まれると、移動のかたまりと、これから作る当たり判定のかたまりが両方動きます。",
-    "control",
-    "クローンされたとき",
-    17,
-    true
-  ],
-  [
-    "当たり判定",
-    "新しい方の下に「ずっと」をつなごう",
-    "「制御」の「ずっと」を、今置いた新しい「クローンされたとき」の下につなぎます。",
-    "移動用の「70回繰り返す」は変えていませんか？",
-    "この「ずっと」は、動いている間に何度も当たったか調べるためのものです。",
-    "control",
-    "ずっと",
-    18,
-    true
-  ],
-  [
-    "当たり判定",
-    "「もし〜なら」を中に入れよう",
-    "「制御」の「もし〜なら」を、新しい「ずっと」のくぼみの中に入れます。",
-    "「ずっと」の中に、もう1つコの字が入りましたか？",
-    "「もし〜なら、でなければ」の大きい方ではありません。六角形の穴がある方を選びます。",
-    "control",
-    "もし ◇ なら",
-    19,
-    true
-  ],
-  [
-    "当たり判定",
+    "プレイヤーとの接触",
     "水色の「調べる」を押そう",
-    "左端を見て、水色の丸の「調べる」をクリックします。",
-    "水色のブロックが並びましたか？",
-    "「制御」より下にあります。名前を見て探しましょう。",
+    "左端の「調べる」をクリックします。",
+    "水色の「〜に触れた」がありますか？",
+    "「色に触れた」ではありません。",
     "sensing",
     null,
-    19,
-    true
+    17
   ],
   [
-    "当たり判定",
-    "「マウスのポインターに触れた」を探そう",
-    "「調べる」の上の方の「マウスのポインターに触れた」という六角形のブロックを探します。",
-    "角が6つある形を見つけましたか？",
-    "「〜色に触れた」ではありません。相手を「▼」で選べるブロックです。",
+    "プレイヤーとの接触",
+    "「触れた」を内側の右の穴へ入れよう",
+    "「マウスのポインターに触れた」を、内側の「または」の右の穴へ入れます。",
+    "比較の隣に水色の条件が入りましたか？",
+    "外側の右の穴は、ビーム用に空けておきます。",
     "sensing",
     "マウスのポインター ▼ に触れた",
-    19,
-    true
+    18
   ],
   [
-    "当たり判定",
-    "六角形を「もし」の穴へ入れよう",
-    "水色の六角形のブロックを、「もし〜なら」の六角形の穴に重ね、白い影が出たら離します。",
-    "「もし」の文字の横の穴に水色が入りましたか？",
-    "下のくぼみではありません。上の行の、六角形の穴へ入れます。",
+    "プレイヤーとの接触",
+    "相手を「プレイヤー」にしよう",
+    "今入れた水色の「▼」を押し、一覧から「プレイヤー」を選びます。",
+    "内側が「y座標 ＜ -155 または プレイヤーに触れた」ですか？",
+    "ロケットのスプライト名は「プレイヤー」です。",
+    "sensing",
+    "プレイヤー ▼ に触れた",
+    19
+  ],
+  [
+    "ビームとの接触",
+    "もう1つ「触れた」を外側の右へ入れよう",
+    "新しい「マウスのポインターに触れた」を、外側の「または」の右の穴へ入れます。",
+    "一番右に水色の条件が入りましたか？",
+    "先ほどのプレイヤー用を動かさず、一覧から新しく持ってきます。",
     "sensing",
     "マウスのポインター ▼ に触れた",
-    20,
-    true
+    20
   ],
   [
-    "当たり判定",
-    "水色のブロックの「▼」を押そう",
-    "今入れた水色のブロックの「マウスのポインター」の横の「▼」を押します。",
-    "触れる相手の一覧が開きましたか？",
-    "今回はドラッグせず、小さな三角をクリックします。",
-    "sensing",
-    "マウスのポインター ▼ に触れた",
-    20,
-    true
-  ],
-  [
-    "当たり判定",
+    "ビームとの接触",
     "相手を「ビーム」にしよう",
-    "開いた一覧から「ビーム」を選びます。",
-    "「もし ビームに触れた なら」になりましたか？",
-    "「プレイヤー」ではありません。消えるきっかけになる相手を選びます。",
+    "新しく入れた水色の「▼」を押し、「ビーム」を選びます。",
+    "下まで来た・プレイヤーに触れた・ビームに触れた、の3条件がありますか？",
+    "3つのうち1つでも成立すると、移動の繰り返しを終えます。",
     "sensing",
     "ビーム ▼ に触れた",
-    21,
-    true
+    21
   ],
   [
-    "当たり判定",
-    "「制御」に戻ろう",
-    "左端のオレンジ色の「制御」をクリックします。",
-    "「このクローンを削除する」を探せますか？",
-    "移動のかたまりの最後にあるものは、そのまま残します。新しくもう1つ使います。",
+    "下へ動かす",
+    "「動き」を押そう",
+    "左端の「動き」をクリックします。",
+    "青い「y座標を10ずつ変える」が見つかりますか？",
+    "次は条件の穴ではなく、繰り返す動作を入れます。",
+    "motion",
+    null,
+    21
+  ],
+  [
+    "下へ動かす",
+    "「y座標を10ずつ変える」を内側へ入れよう",
+    "青いブロックを「〜まで繰り返す」のくぼみの中へ入れます。",
+    "青い動かすブロックがオレンジに囲まれていますか？",
+    "上の条件の中には入れません。",
+    "motion",
+    "y座標を 10 ずつ変える",
+    22
+  ],
+  [
+    "下へ動かす",
+    "数字を「-5」にしよう",
+    "今入れた10をクリックし、「-5」にします。",
+    "「y座標を-5ずつ変える」ですか？",
+    "プラスだと上へ動きます。元の見本はマイナス5です。",
+    "motion",
+    "y座標を -5 ずつ変える",
+    23
+  ],
+  [
+    "動く間隔",
+    "「制御」を押そう",
+    "左端の「制御」をクリックします。",
+    "「1秒待つ」が見つかりますか？",
+    "UFOを出す0.8秒とは別の待ち時間です。",
     "control",
     null,
-    21,
-    true
+    23
   ],
   [
-    "当たり判定",
-    "「もし」の内側に削除を入れよう",
-    "新しい「このクローンを削除する」を、「もし ビームに触れた なら」の内側へ入れます。",
-    "削除のブロックが「もし」に囲まれていますか？",
-    "「ずっと」の中でも「もし」の外だと、当たる前に消えます。必ず小さい方のくぼみに入れます。",
+    "動く間隔",
+    "「1秒待つ」を移動のすぐ下へ入れよう",
+    "新しい「1秒待つ」を、y座標を変えるブロックの下、繰り返しの内側へつなぎます。",
+    "移動と待つの2つが内側ですか？",
+    "最初の0.8秒待つは動かさず、新しいブロックを使います。",
+    "control",
+    "1 秒待つ",
+    24
+  ],
+  [
+    "動く間隔",
+    "待ち時間を「0.03」にしよう",
+    "今入れた1をクリックして「0.03」にします。",
+    "移動の下が「0.03秒待つ」ですか？",
+    "小数点を忘れないようにします。",
+    "control",
+    "0.03 秒待つ",
+    25
+  ],
+  [
+    "ぶつかった後の処理",
+    "「もし〜なら」を繰り返しの外につなごう",
+    "「制御」の「もし〜なら」を、「〜まで繰り返す」の外側の下につなぎます。",
+    "移動の囲いの外に、新しいコの字がつきましたか？",
+    "移動が終わった後に、何に当たったかを調べます。",
+    "control",
+    "もし ◇ なら",
+    26
+  ],
+  [
+    "ぶつかった後の処理",
+    "「調べる」を押そう",
+    "左端の「調べる」をクリックします。",
+    "「〜に触れた」が見つかりますか？",
+    "繰り返しの条件とは別に、もう一度調べます。",
+    "sensing",
+    null,
+    26
+  ],
+  [
+    "ぶつかった後の処理",
+    "「もし」の穴に「触れた」を入れよう",
+    "新しい「マウスのポインターに触れた」を、今の「もし」の六角形の穴へ入れます。",
+    "もしの横に水色が入りましたか？",
+    "下のくぼみではなく、条件の穴に入れます。",
+    "sensing",
+    "マウスのポインター ▼ に触れた",
+    27
+  ],
+  [
+    "ぶつかった後の処理",
+    "相手を「プレイヤー」にしよう",
+    "水色の「▼」を押して「プレイヤー」を選びます。",
+    "「もし プレイヤーに触れた なら」ですか？",
+    "プレイヤーに触れたときだけ、ライフを減らします。",
+    "sensing",
+    "プレイヤー ▼ に触れた",
+    28
+  ],
+  [
+    "ライフを減らす",
+    "「変数」を押そう",
+    "左端のオレンジ色の「変数」をクリックします。",
+    "ライフやスコアに使うブロックが並びましたか？",
+    "「制御」と似た色ですが、「変数」の文字で選びます。",
+    "data",
+    null,
+    28
+  ],
+  [
+    "ライフを減らす",
+    "「〜を1ずつ変える」を「もし」の中へ入れよう",
+    "「変数」の「〜を1ずつ変える」を、プレイヤーに触れた場合の「もし」の内側へ入れます。",
+    "変数を変えるブロックが「もし」に囲まれていますか？",
+    "「〜を1にする」ではなく、「ずつ変える」です。",
+    "data",
+    "変数 ▼ を 1 ずつ変える",
+    29
+  ],
+  [
+    "ライフを減らす",
+    "変数を「ライフ」にしよう",
+    "変数ブロックの「▼」を押して、既存の「ライフ」を選びます。",
+    "「ライフを1ずつ変える」ですか？",
+    "スターターには「ライフ」があります。別名の変数を新しく作らないようにします。",
+    "data",
+    "ライフ ▼ を 1 ずつ変える",
+    30
+  ],
+  [
+    "ライフを減らす",
+    "変える数を「-1」にしよう",
+    "ライフの数字をクリックし、「-1」にします。",
+    "「ライフを-1ずつ変える」ですか？",
+    "触れたらライフが1減ります。1のままだと増えてしまいます。",
+    "data",
+    "ライフ ▼ を -1 ずつ変える",
+    31
+  ],
+  [
+    "ゲームオーバーを調べる",
+    "「制御」を押そう",
+    "左端の「制御」をクリックします。",
+    "新しい「もし〜なら」が見つかりますか？",
+    "ライフがなくなったかを、入れ子の条件で調べます。",
+    "control",
+    null,
+    31
+  ],
+  [
+    "ゲームオーバーを調べる",
+    "2つ目の「もし」を内側につなごう",
+    "新しい「もし〜なら」を「ライフを-1ずつ変える」のすぐ下、最初のもしの内側へ入れます。",
+    "大きいもしの中に、小さいもしがありますか？",
+    "最初のもしの外へ出さないようにします。",
+    "control",
+    "もし ◇ なら",
+    32
+  ],
+  [
+    "ゲームオーバーを調べる",
+    "「演算」の「＜」を小さい穴へ入れよう",
+    "「演算」を押し、「〜 ＜ 50」を内側の小さい「もし」の条件の穴へ入れます。",
+    "小さいもしに比較の条件が入りましたか？",
+    "繰り返しの条件を動かさず、新しい「＜」を使います。",
+    "operators",
+    "○ ＜ 50",
+    33
+  ],
+  [
+    "ゲームオーバーを調べる",
+    "「変数」を押そう",
+    "左端の「変数」をクリックします。",
+    "丸い「ライフ」が見つかりますか？",
+    "今度は値を変える命令ではなく、現在の値を表す丸いブロックです。",
+    "data",
+    null,
+    33
+  ],
+  [
+    "ゲームオーバーを調べる",
+    "丸い「ライフ」を比較の左へ入れよう",
+    "丸い「ライフ」を、「＜」の左の入力欄へ入れます。",
+    "「ライフ ＜ 50」ですか？",
+    "チェックボックスではなく、丸いブロックを運びます。",
+    "data",
+    "ライフ",
+    34
+  ],
+  [
+    "ゲームオーバーを調べる",
+    "右の数字を「1」にしよう",
+    "比較の右の数字をクリックして「1」にします。",
+    "「もし ライフ ＜ 1 なら」ですか？",
+    "ライフが0以下になったら条件が成立します。",
+    "operators",
+    "ライフ ＜ 1",
+    35
+  ],
+  [
+    "ゲームオーバーの合図",
+    "「イベント」を押そう",
+    "左端の黄色の「イベント」をクリックします。",
+    "「メッセージ1を送る」が見つかりますか？",
+    "受け取ったときではなく、送るブロックです。",
+    "event",
+    null,
+    35
+  ],
+  [
+    "ゲームオーバーの合図",
+    "「送る」を小さいもしの内側へ入れよう",
+    "「メッセージ1を送る」を、「ライフ ＜ 1」の小さいもしの内側へ入れます。",
+    "小さいもしに黄色いブロックが入っていますか？",
+    "大きいもしの中でも、小さいもしの外には置きません。",
+    "event",
+    "メッセージ1 ▼ を送る",
+    36
+  ],
+  [
+    "ゲームオーバーの合図",
+    "「ゲームオーバー」を選ぼう",
+    "送るブロックの「▼」を押して「ゲームオーバー」を選びます。",
+    "「ゲームオーバーを送る」ですか？",
+    "スターターの背景やプレイヤーが、この合図を受け取って表示を変えます。",
+    "event",
+    "ゲームオーバー ▼ を送る",
+    37
+  ],
+  [
+    "ビームが当たった後",
+    "「制御」を押そう",
+    "左端の「制御」をクリックします。",
+    "もう1つ「もし〜なら」を使えますか？",
+    "今度はライフではなくスコアの処理です。",
+    "control",
+    null,
+    37
+  ],
+  [
+    "ビームが当たった後",
+    "新しい「もし」を大きいもしの外の下へつなごう",
+    "新しい「もし〜なら」を、プレイヤー用の大きいもしの外側、そのすぐ下につなぎます。",
+    "プレイヤー用とビーム用の2つのもしが、同じ深さで上下に並びましたか？",
+    "プレイヤー用の中に入れると、ビームだけが当たったときに動きません。",
+    "control",
+    "もし ◇ なら",
+    38
+  ],
+  [
+    "ビームが当たった後",
+    "「調べる」の「触れた」を穴へ入れよう",
+    "「調べる」を押し、新しい「マウスのポインターに触れた」を、下のもしの穴へ入れます。",
+    "下のもしに水色の条件が入りましたか？",
+    "上のプレイヤー用の条件はそのまま残します。",
+    "sensing",
+    "マウスのポインター ▼ に触れた",
+    39
+  ],
+  [
+    "ビームが当たった後",
+    "相手を「ビーム」にしよう",
+    "下の水色の「▼」を押して「ビーム」を選びます。",
+    "「もし ビームに触れた なら」ですか？",
+    "触れていた相手によって、増減する変数を変えます。",
+    "sensing",
+    "ビーム ▼ に触れた",
+    40
+  ],
+  [
+    "スコアを増やす",
+    "「変数」を押そう",
+    "左端の「変数」をクリックします。",
+    "「〜を1ずつ変える」がありますか？",
+    "ライフ用とは別に新しいブロックを使います。",
+    "data",
+    null,
+    40
+  ],
+  [
+    "スコアを増やす",
+    "「1ずつ変える」をビーム用の内側へ入れよう",
+    "「〜を1ずつ変える」を、ビームに触れた場合のもしの内側へ入れます。",
+    "下のもしが変数ブロックを囲んでいますか？",
+    "「1にする」ではなく「1ずつ変える」を選びます。",
+    "data",
+    "変数 ▼ を 1 ずつ変える",
+    41
+  ],
+  [
+    "スコアを増やす",
+    "変数を「スコア」にしよう",
+    "今入れたブロックの「▼」を押して「スコア」を選びます。数字は1のままです。",
+    "「スコアを1ずつ変える」ですか？",
+    "ビームが触れた場合に1点増えます。",
+    "data",
+    "スコア ▼ を 1 ずつ変える",
+    42
+  ],
+  [
+    "最後にコピーを消す",
+    "「制御」を押そう",
+    "左端の「制御」をクリックし、下の方の「このクローンを削除する」を探します。",
+    "いちばん下に置くブロックです。",
+    "この段階まで、まだ削除はつなぎません。変数の処理の後で消します。",
     "control",
     "このクローンを削除する",
-    22,
-    true
+    42
   ],
   [
-    "当ててみよう",
-    "旗 → スタート → スペースキーで確認しよう",
-    "緑の旗、作品内のスタートを1回押し、作品の画面をクリックしてからスペースキーを押します。",
-    "ビームが触れたUFOが消えますか？ 撃たなければ、下へ進みますか？",
-    "左右キーでUFOの下へ移動してから撃ちます。ビームの発射ができているかも確認します。",
-    "play",
-    null,
-    22,
-    true
+    "最後にコピーを消す",
+    "すべての囲いの外の下へつなごう",
+    "「このクローンを削除する」を、ビーム用のもしの外側のいちばん下につなぎます。",
+    "削除が、繰り返しと2つのもしのすべての外ですか？",
+    "下まで来たときも、何かに当たったときも、必要な処理を終えてから消します。",
+    "control",
+    "このクローンを削除する",
+    43
   ],
   [
-    "当ててみよう",
-    "停止してから、作品を保存しよう",
-    "赤い停止ボタンで止めます。ここまでできたら、次で作品を保存します。",
-    "当たったUFOだけが消え、次のUFOも出ましたか？",
-    "この版ではビーム自体は当たっても消えず、上へ進みます。スコアやライフはまだ追加しません。",
+    "動作確認",
+    "まず撃たずに、下まで進むか試そう",
+    "緑の旗→作品内のスタートを1回押します。プレイヤーを端へ動かし、撃たずにUFOを見ます。",
+    "左右の位置を変えて出現し、下まで来たUFOが消えますか？",
+    "乱数は同じ数が続くこともあります。数回の出現で確認します。",
     "play",
     null,
-    22,
-    true
+    43
+  ],
+  [
+    "動作確認",
+    "ビームでスコアが増えるか試そう",
+    "左右キーで位置を合わせ、スペースキーでUFOにビームを当てます。",
+    "当たったUFOが消え、スコアが増えましたか？",
+    "ビームが発射できる作品が必要です。スコアが増えない場合は、ビーム用のもしの位置と変数名を確認します。",
+    "play",
+    null,
+    43
+  ],
+  [
+    "動作確認",
+    "プレイヤーに触れたときも試そう",
+    "緑の旗からやり直し、UFOの下へプレイヤーを移動させます。",
+    "触れるとライフが1減り、0になるとゲームオーバーの表示になりますか？",
+    "初期スターターでは旗でライフ3、スコア0に戻します。スタートを連打せず、試すたびに旗からやり直します。",
+    "play",
+    null,
+    43
   ],
   [
     "保存しよう",
-    "作品をコンピューターに保存しよう",
-    "上の「ファイル」→「コンピューターに保存する」を押します。",
+    "赤い停止ボタンを押して、作品を保存しよう",
+    "赤い停止ボタンで止め、「ファイル」→「コンピューターに保存する」を押します。",
     "「.sb3」の作品を保存できましたか？",
-    "例：シューティング_UFO当たり判定完成.sb3。ガイドの進み具合とは別に保存します。",
+    "元の見本の処理順です。ゲームオーバーの合図だけで生成のずっとを停止する処理は、今回の見本にはありません。試し終わったら赤い停止ボタンで止めます。",
     "save",
     null,
-    22,
-    true
+    43
   ]
 ];
 let state = {current:0,done:[],reflection:'',started:false};
 let storageAvailable = true;
-try { const stored = JSON.parse(localStorage.getItem('ufo-guide-v3') || 'null'); if(stored && Number.isInteger(stored.current) && stored.current>=0 && stored.current<lessons.length && Array.isArray(stored.done)) state={...state,...stored}; } catch { storageAvailable=false; }
-try { if (!localStorage.getItem('ufo-guide-v3')) { const previous=JSON.parse(localStorage.getItem('ufo-guide-v2')||localStorage.getItem('ufo-guide-v1')||'null');if(previous&&Number.isInteger(previous.current)&&Array.isArray(previous.done)){state={current:Math.min(Math.max(previous.current,0),16),done:previous.done.filter(index=>Number.isInteger(index)&&index>=0&&index<16),reflection:typeof previous.reflection==='string'?previous.reflection:'',started:previous.started===true};} } } catch {}
+try { const stored = JSON.parse(localStorage.getItem('ufo-guide-canonical-v1') || 'null'); if(stored && Number.isInteger(stored.current) && stored.current>=0 && stored.current<lessons.length && Array.isArray(stored.done)) state={...state,...stored}; } catch { storageAvailable=false; }
 const element = id => document.getElementById(id);
-function save(){try{localStorage.setItem('ufo-guide-v3',JSON.stringify(state));}catch{storageAvailable=false;}element('saved').textContent=storageAvailable?'このブラウザに保存中':'自動保存できません（このまま学習できます）';}
+function save(){try{localStorage.setItem('ufo-guide-canonical-v1',JSON.stringify(state));}catch{storageAvailable=false;}element('saved').textContent=storageAvailable?'このブラウザに保存中':'自動保存できません（このまま学習できます）';}
 function block(label,color,x,y,width=290){return `<g transform="translate(${x} ${y})"><path d="M0 0 H15 l6 5 h24 l6 -5 H${width} V34 H51 l-6 5 H21 l-6 -5 H0 Z" fill="${color}" stroke="#000" stroke-opacity=".15"/><text x="12" y="23" fill="white" font-size="15" font-weight="600">${label}</text></g>`;}
-function scripts(level,random=false){
-let result=block('⚑ が押されたとき','#b77a00',10,25,225)+block('隠す','#8154cf',10,59,225);
-if(level>=1) result+=block(level>=2?'ゲームスタート ▼ を受け取ったとき':'メッセージ1 ▼ を受け取ったとき','#b77a00',10,145,325);
-if(level>=3)result+='<path d="M10 179 H335 V213 H30 V300 H335 V320 H10 Z" fill="#ba6b00"/><text x="22" y="202" fill="white" font-size="15">ずっと</text>';
-if(level>=4)result+=block('自分自身 ▼ のクローンを作る','#ba6b00',30,220,295);
-if(level>=5)result+=block('1 秒待つ','#ba6b00',30,254,295);
-if(level>=6)result+=block('クローンされたとき','#ba6b00',365,25,310);
-if(level>=7){if(random){result+='<rect x="365" y="59" width="310" height="52" rx="4" fill="#3373d3"/><text x="374" y="78" fill="white" font-size="12">x座標を</text><rect x="428" y="63" width="217" height="23" rx="12" fill="#328329"/><text x="435" y="79" fill="white" font-size="12">-180 から 180 までの乱数</text><text x="374" y="102" fill="white" font-size="13">y座標を 170 にする</text>';}else result+=block(level>=8?'x座標を 0、y座標を 170 にする':'x座標を 0、y座標を 0 にする','#3373d3',365,59,310);}
-if(level>=9)result+=block('表示する','#8154cf',365,random?111:93,310);
-if(level>=10)result+='<path d="M365 145 H675 V179 H385 V278 H675 V298 H365 Z" fill="#ba6b00"/><text x="377" y="168" fill="white" font-size="15">'+(level>=11?'70':'10')+' 回繰り返す</text>';
-if(level>=12)result+=block(level>=13?'y座標を -5 ずつ変える':'y座標を 10 ずつ変える','#3373d3',385,188,280);
-if(level>=14)result+=block((level>=15?'0.03':'1')+' 秒待つ','#ba6b00',385,222,280);
-if(level>=16)result+=block('このクローンを削除する','#ba6b00',365,298,310);
-if(level>=17)result+=block('クローンされたとき','#ba6b00',10,355,325);
-if(level>=18)result+='<path d="M10 389 H335 V423 H30 V583 H335 V605 H10 Z" fill="#ba6b00"/><text x="22" y="412" fill="white" font-size="15">ずっと</text>';
-if(level>=19)result+='<path d="M30 430 H325 V478 H50 V543 H325 V563 H30 Z" fill="#d08711"/><text x="42" y="461" fill="white" font-size="15">もし</text><path d="M93 439 H247 L259 453 247 467 H93 L81 453 Z" fill="'+(level>=20?'#187d99':'#9c600b')+'"/><text x="265" y="461" fill="white" font-size="15">なら</text>';
-if(level>=20)result+='<text x="96" y="458" fill="white" font-size="'+(level>=21?'12':'9')+'">'+(level>=21?'ビーム ▼ に触れた':'マウスのポインター ▼ に触れた')+'</text>';
-if(level>=22)result+=block('このクローンを削除する','#ba6b00',50,491,265);
-return result;
+function box(x,y,w,h,fill){return '<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="5" fill="'+fill+'"/>';}
+function txt(x,y,text,size=15,fill='white'){return '<text x="'+x+'" y="'+y+'" fill="'+fill+'" font-size="'+size+'">'+text+'</text>';}
+function hex(x,y,w,label,color='#187d99',size=13){return '<path d="M'+(x+12)+' '+y+' H'+(x+w-12)+' L'+(x+w)+' '+(y+17)+' '+(x+w-12)+' '+(y+34)+' H'+(x+12)+' L'+x+' '+(y+17)+' Z" fill="'+color+'"/>'+txt(x+17,y+23,label,size);}
+function frame(x,y,w,h,label,color='#ba6b00',header=40){return '<path d="M'+x+' '+y+' H'+(x+w)+' V'+(y+header)+' H'+(x+20)+' V'+(y+h-20)+' H'+(x+w)+' V'+(y+h)+' H'+x+' Z" fill="'+color+'"/>'+txt(x+12,y+26,label);}
+function scripts(level){
+let out=block('⚑ が押されたとき','#b77a00',15,260,300)+block('隠す','#8154cf',15,294,300);
+if(level>=1)out+=block(level>=2?'ゲームスタート ▼ を受け取ったとき':'メッセージ1 ▼ を受け取ったとき','#b77a00',15,25,315);
+if(level>=3)out+=frame(15,59,315,175,'ずっと');
+if(level>=4)out+=block((level>=5?'0.8':'1')+' 秒待つ','#ba6b00',35,105,285);
+if(level>=6)out+=block('自分自身 ▼ のクローンを作る','#ba6b00',35,139,285);
+if(level>=7)out+=block('クローンされたとき','#ba6b00',350,25,820);
+if(level>=8){out+=box(350,59,820,44,'#3373d3');out+=txt(362,87,'x座標を');if(level>=10)out+=box(430,64,286,31,'#328329')+txt(443,86,'-210 から 210 までの乱数',17);else out+=txt(440,87,'0');out+=txt(738,87,'y座標を '+(level>=9?'170':'0')+' にする');}
+if(level>=11)out+=block('表示する','#8154cf',350,103,820);
+if(level>=12)out+=frame(350,137,820,190,'','#e89d0b',82)+txt(1030,193,'まで繰り返す',15);
+if(level>=13){out+=hex(365,158,650,'','#328329');
+if(level>=14){out+=hex(378,158,420,'','#409d35')+txt(803,181,'または',13);
+if(level>=15){out+=hex(389,158,193,'','#348c2b')+txt(478,181,'＜',17);out+=box(406,163,64,25,level>=16?'#3373d3':'white');if(level>=16)out+=txt(411,181,'y座標',12);out+=box(507,163,58,25,'white')+txt(511,181,level>=17?'-155':'50',14,'#274353');}
+else out+=hex(389,158,193,'','#296e22');
+out+=txt(585,181,'または',12);
+if(level>=18)out+=hex(636,158,150,level>=19?'プレイヤー ▼ に触れた':'マウスのポインター ▼ に触れた','#187d99',level>=19?10:7);
+else out+=hex(636,158,150,'','#296e22');
+}else out+=hex(378,158,420,'','#296e22')+txt(803,181,'または',13);
+if(level>=20)out+=hex(856,158,148,level>=21?'ビーム ▼ に触れた':'マウスのポインター ▼ に触れた','#187d99',level>=21?11:7);
+else out+=hex(856,158,148,'','#296e22');}
+if(level>=22)out+=block('y座標を '+(level>=23?'-5':'10')+' ずつ変える','#3373d3',370,232,420);
+if(level>=24)out+=block((level>=25?'0.03':'1')+' 秒待つ','#ba6b00',370,266,420);
+if(level>=26){out+=frame(350,352,640,260,'もし');
+if(level>=27)out+=hex(405,355,335,level>=28?'プレイヤー ▼ に触れた':'マウスのポインター ▼ に触れた');
+else out+=hex(405,355,335,'','#925806');
+out+=txt(760,378,'なら');}
+if(level>=29)out+=block((level>=30?'ライフ':'変数')+' ▼ を '+(level>=31?'-1':'1')+' ずつ変える','#c47700',370,405,550);
+if(level>=32){out+=frame(370,451,590,125,'もし');if(level>=33)out+=hex(425,454,265,(level>=34?'ライフ':'○')+' ＜ '+(level>=35?'1':'50'),'#328329',16);else out+=hex(425,454,265,'','#925806');out+=txt(710,477,'なら');}
+if(level>=36)out+=block((level>=37?'ゲームオーバー':'メッセージ1')+' ▼ を送る','#b77a00',390,506,540);
+if(level>=38){out+=frame(350,630,640,130,'もし');if(level>=39)out+=hex(405,633,335,level>=40?'ビーム ▼ に触れた':'マウスのポインター ▼ に触れた');else out+=hex(405,633,335,'','#925806');out+=txt(760,656,'なら');}
+if(level>=41)out+=block((level>=42?'スコア':'変数')+' ▼ を 1 ずつ変える','#c47700',370,685,550);
+if(level>=43)out+=block('このクローンを削除する','#ba6b00',350,773,640);
+return out;}
+function diagram(lesson){
+const level=lesson[7]||0,category=lesson[5];let content='';
+if(['sprite','code','play','save'].includes(category)){content='<rect x="15" y="15" width="850" height="380" rx="12" fill="#edf3f8"/><rect x="25" y="25" width="830" height="35" fill="#7754bb"/>'+txt(40,49,'Scratch　 ファイル ▼',17)+'<rect x="35" y="115" width="480" height="250" fill="white"/>'+txt(48,93,'コード　 コスチューム　 音',17,'#243c50')+'<rect x="545" y="110" width="295" height="195" fill="#183348"/>'+txt(570,91,'⚑ 緑の旗　■ 停止',17,'#277b66')+txt(607,255,'スタート',23)+'<rect x="545" y="328" width="98" height="52" rx="8" fill="white"/><rect x="645" y="328" width="90" height="52" rx="8" fill="white"/><rect x="737" y="328" width="110" height="52" rx="8" fill="#dff3f3"/>'+txt(550,360,'プレイヤー',13,'#234')+txt(657,360,'ビーム',13,'#234')+txt(741,360,'おじゃまUFO',13,'#234');const area=category==='sprite'?[737,328,110,52]:category==='code'?[35,66,100,35]:category==='save'?[143,25,110,35]:[540,67,310,244];content+='<rect x="'+area[0]+'" y="'+area[1]+'" width="'+area[2]+'" height="'+area[3]+'" rx="5" fill="none" stroke="#d54148" stroke-width="4"/>';return '<svg viewBox="0 0 880 415" role="img" aria-label="'+lesson[1]+'">'+content+'</svg>';}
+const ranges=level<=6?[0,0,345,340]:level<=11?[340,10,845,140]:level<=25?[340,130,845,215]:level<=37?[340,345,680,280]:level<=42?[340,620,680,150]:[340,620,680,205];
+return '<p class="caption">ここまでの組み立て見本（今回の部分を拡大）</p><svg viewBox="'+ranges.join(' ')+'" role="img" aria-label="'+lesson[1]+'。'+lesson[2]+'">'+scripts(level)+'</svg>';
 }
-function diagram(lesson){const category=lesson[5],label=lesson[6],level=lesson[7]||0;const color=categories[category]?.[1]||'#2457b9';let content='';if(category==='sprite'||category==='code'||category==='play'||category==='save'){content=`<rect x="15" y="15" width="850" height="385" rx="12" fill="#f0f4fa"/><rect x="20" y="18" width="840" height="37" fill="#7754bb"/><text x="40" y="43" fill="white" font-size="16">Scratch　　ファイル ▼</text><text x="40" y="89" font-size="17">コード　　コスチューム　　音</text><rect x="40" y="110" width="480" height="260" rx="8" fill="white"/><text x="70" y="160" fill="#708198" font-size="18">ブロックを組み立てる場所</text><rect x="555" y="100" width="285" height="185" rx="8" fill="#172541"/><text x="585" y="86" font-size="19" fill="#218771">⚑　緑の旗</text><text x="648" y="170" fill="white" font-size="38">🚀</text><rect x="625" y="230" width="150" height="35" rx="6" fill="#239a79"/><text x="660" y="254" fill="white" font-size="17">スタート</text><text x="568" y="322" font-size="13">スプライト一覧</text><rect x="555" y="335" width="90" height="52" rx="6" fill="white"/><rect x="651" y="335" width="90" height="52" rx="6" fill="#e7f0ff"/><rect x="747" y="335" width="98" height="52" rx="6" fill="white"/><text x="560" y="369" font-size="14">プレイヤー</text><text x="672" y="369" font-size="15">ビーム</text><text x="752" y="369" font-size="13">おじゃまUFO</text>`;const focus={sprite:[747,335,98,52],code:[30,63,95,36],play:[550,58,300,224],save:[142,20,100,33]}[category];content+=`<rect x="${focus[0]}" y="${focus[1]}" width="${focus[2]}" height="${focus[3]}" rx="7" fill="none" stroke="#dc3d45" stroke-width="4"/><text x="300" y="395" fill="#c72f3d" font-size="16">赤い枠の場所を見よう</text>`;}else{content=`<rect x="5" y="10" width="80" height="400" rx="8" fill="#f2f5fa"/>`;Object.entries(categories).forEach(([key,value],index)=>{const ypos=34+index*60;content+=`<circle cx="44" cy="${ypos}" r="13" fill="${value[1]}"/><text x="44" y="${ypos+34}" text-anchor="middle" font-size="13">${value[0]}</text>`;if(key===category)content+=`<rect x="10" y="${ypos-23}" width="68" height="66" rx="9" fill="none" stroke="#dc3d45" stroke-width="3"/>`;});content+=`<text x="105" y="30" font-size="14" fill="#52627a">① 左：ブロック一覧</text><text x="455" y="30" font-size="14" fill="#52627a">② 中央：組み立てる場所</text><rect x="100" y="50" width="305" height="355" fill="#f7f9fc"/><rect x="425" y="50" width="440" height="355" rx="8" fill="#f0f4fa"/>`;if(label)content+=block(label,color,107,125,290)+`<path d="M280 188 Q345 250 448 210" fill="none" stroke="#dc3d45" stroke-width="4" marker-end="url(#arrow)"/><text x="130" y="235" fill="#b53340" font-size="14">この形・文字を探そう</text>`;content+=`<g transform="translate(432 65) scale(${level>=17?0.52:0.61})">${scripts(level,lesson[8])}</g>`;if(!label)content+=`<text x="118" y="110" fill="${color}" font-size="19">「${categories[category][0]}」をクリック</text>`;}return `<svg viewBox="0 0 880 425" role="img" aria-label="${lesson[1]}。${lesson[2]}"><defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto"><path d="M0 0 L8 3 L0 6" fill="#dc3d45"/></marker></defs>${content}</svg>`;}
 function render(focus=false){element('intro').hidden=state.started;element('lesson').hidden=!state.started;const lesson=lessons[state.current];element('count').textContent=`ステップ ${state.current+1} / ${lessons.length}　・　できた ${state.done.length}`;element('bar').max=lessons.length;element('bar').value=state.done.length;element('phase').textContent=lesson[0];element('title').textContent=lesson[1];element('instruction').textContent=lesson[2];element('visual').innerHTML=diagram(lesson);element('check').textContent=lesson[3];element('hint').textContent=lesson[4];element('help').open=false;element('back').disabled=state.current===0;element('next').textContent=state.current===lessons.length-1?'できた！ ふり返りへ':'できた！ 次へ →';element('finish').hidden=!state.done.includes(lessons.length-1);element('reflection').value=state.reflection;element('steps').replaceChildren();lessons.forEach((item,index)=>{const button=document.createElement('button');button.textContent=`${state.done.includes(index)?'✓ ':''}${index+1}. ${item[1]}`;if(index===state.current)button.setAttribute('aria-current','step');button.onclick=()=>{state.current=index;save();render(true);};element('steps').append(button);});save();if(focus)element('title').focus();}
-element('start').onclick=()=>{state.started=true;save();render(true);};element('back').onclick=()=>{state.current=Math.max(0,state.current-1);render(true);};element('next').onclick=()=>{if(!state.done.includes(state.current))state.done.push(state.current);if(state.current<lessons.length-1){state.current++;render(true);}else{render();element('finish').scrollIntoView({behavior:'smooth'});}};element('reflection').oninput=event=>{state.reflection=event.target.value;save();};element('reset').onclick=()=>{if(confirm('このガイドの進み具合とふり返りを消しますか？ Scratchの作品は消えません。')){state={current:0,done:[],reflection:'',started:false};render();window.scrollTo(0,0);}};element('export').onclick=()=>{const blob=new Blob([`UFO学習の記録\nできたステップ：${state.done.length}/${lessons.length}\n何を変える？ なぜ？\n${state.reflection}`],{type:'text/plain;charset=utf-8'});const url=URL.createObjectURL(blob);const anchor=document.createElement('a');anchor.href=url;anchor.download='UFO学習の記録.txt';anchor.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};element('complete').innerHTML=`<svg viewBox="0 0 700 630" role="img" aria-label="完成見本。旗で隠す。ゲームスタートで1秒ごとにクローンを作る。クローンは上から下へ動き、ビームに触れたら消える。">${scripts(22,true)}</svg>`;render();
+element('start').onclick=()=>{state.started=true;save();render(true);};element('back').onclick=()=>{state.current=Math.max(0,state.current-1);render(true);};element('next').onclick=()=>{if(!state.done.includes(state.current))state.done.push(state.current);if(state.current<lessons.length-1){state.current++;render(true);}else{render();element('finish').scrollIntoView({behavior:'smooth'});}};element('reflection').oninput=event=>{state.reflection=event.target.value;save();};element('reset').onclick=()=>{if(confirm('このガイドの進み具合とふり返りを消しますか？ Scratchの作品は消えません。')){state={current:0,done:[],reflection:'',started:false};render();window.scrollTo(0,0);}};element('export').onclick=()=>{const blob=new Blob([`UFO学習の記録\nできたステップ：${state.done.length}/${lessons.length}\n何を変える？ なぜ？\n${state.reflection}`],{type:'text/plain;charset=utf-8'});const url=URL.createObjectURL(blob);const anchor=document.createElement('a');anchor.href=url;anchor.download='UFO学習の記録.txt';anchor.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};element('complete').innerHTML='<svg viewBox="0 0 1190 850" role="img" aria-label="元の見本準拠。0.8秒待ってコピーを作り、xは-210から210の乱数、yは170。下端またはプレイヤーかビームに触れるまで-5ずつ動かし0.03秒待つ。プレイヤーならライフを減らし、1未満ならゲームオーバーを送る。ビームならスコアを増やし、最後に削除。">'+scripts(43)+'</svg>';render();
+
 </script><script>
-const ufoButton=document.getElementById('tryUfo');
-ufoButton.onclick=()=>{ufoButton.disabled=true;document.getElementById('demoStatus').textContent='コピーが下へ進み、ビームが当たると消えます。';[0,1000,2000].forEach(delay=>setTimeout(()=>{const ufo=document.createElement('div');ufo.className='demo-ufo-fall';const position=(20+Math.random()*60)+'%';ufo.style.left=position;document.getElementById('demoStage').append(ufo);setTimeout(()=>{const beam=document.createElement('div');beam.className='demo-beam';beam.style.left=position;document.getElementById('demoStage').append(beam);setTimeout(()=>{ufo.remove();beam.remove();},300);},900);},delay));setTimeout(()=>{ufoButton.disabled=false;document.getElementById('demoStatus').textContent='当たったUFOが消えました。実際の作品ではスペースキーで撃ちます。';},3600);};
+const demoButtons=['demoBeam','demoPlayer','demoMiss'];
+let demoScore=0,demoLife=3;
+function preview(kind){demoButtons.forEach(id=>document.getElementById(id).disabled=true);if(demoLife<1){demoScore=0;demoLife=3;}const ufo=document.createElement('div');ufo.className='demo-ufo-fall';const position=kind==='player'?'50%':(25+Math.random()*50)+'%';ufo.style.left='calc('+position+' - 25px)';document.getElementById('demoStage').append(ufo);document.getElementById('demoStatus').textContent='コピーが下へ動きます…';const delay=kind==='beam'?1150:kind==='player'?2050:2400;if(kind==='beam')setTimeout(()=>{const beam=document.createElement('div');beam.className='demo-beam';beam.style.left=position;document.getElementById('demoStage').append(beam);setTimeout(()=>beam.remove(),350);},800);setTimeout(()=>{ufo.remove();if(kind==='beam')demoScore++;if(kind==='player')demoLife--;document.getElementById('demoStatus').textContent='スコア '+demoScore+' ／ ライフ '+demoLife+(demoLife<1?' ／ ゲームオーバー！ 次に押すと見本をリセットします。':kind==='miss'?' ／ 下まで来たので削除。数は変わりません。':' ／ 処理の後にコピーを削除。');demoButtons.forEach(id=>document.getElementById(id).disabled=false);},delay);}
+document.getElementById('demoBeam').onclick=()=>preview('beam');
+document.getElementById('demoPlayer').onclick=()=>preview('player');
+document.getElementById('demoMiss').onclick=()=>preview('miss');
 const baseDiagram=diagram;
-diagram=function(lesson){
-let focus=lesson[6]?'<div class="block-focus"><p>今回さがすブロック ／ '+categories[lesson[5]][0]+'</p><svg viewBox="0 0 600 72" role="img" aria-label="'+lesson[6]+'">'+block(lesson[6],categories[lesson[5]][1],12,12,565).replace('font-size="15"','font-size="21"').replace('y="23"','y="26"')+'</svg></div>':'';
-if(lesson[5]==='sensing'&&lesson[6])focus='<div class="block-focus"><p>今回さがすブロック ／ 調べる</p><svg viewBox="0 0 600 72" role="img" aria-label="'+lesson[6]+'"><path d="M30 15 H550 L578 36 550 57 H30 L2 36 Z" fill="#187d99"/><text x="42" y="43" fill="white" font-size="21">'+lesson[6]+'</text></svg></div>';
-const places={39:'置く場所：移動のかたまりと離して、新しく置きます。',40:'つなぐ場所：新しい「クローンされたとき」の下。',41:'入れる場所：新しい「ずっと」の内側。',43:'今回は探すだけ。六角形の形に注目。',44:'入れる場所：「もし」の文字の横、六角形の穴。',45:'今回はドラッグしません。水色のブロックの「▼」を押します。',46:'今回はドラッグしません。一覧から「ビーム」を選びます。',48:'入れる場所：小さい方の「もし」のくぼみの内側。',3:'置く場所：元からあるかたまりとは離れた、空いているところ。',4:'今回はドラッグしません。「▼」をクリックします。',5:'今回はドラッグしません。一覧から選びます。',7:'つなぐ場所：ゲームスタートを受け取ったときのすぐ下。',8:'今回は探すだけ。まだ運ばなくて大丈夫。',9:'入れる場所：「ずっと」の内側。',10:'入れる場所：「ずっと」の内側、クローンを作るのすぐ下。',11:'置く場所：前のかたまりとは離れた、空いているところ。',13:'つなぐ場所：クローンされたときのすぐ下。',14:'今回はドラッグしません。x座標の数字をクリックして書きかえます。',15:'今回はドラッグしません。y座標の数字をクリックして書きかえます。',23:'つなぐ場所：位置を決める青いブロックのすぐ下。',25:'つなぐ場所：表示するのすぐ下。',26:'今回はドラッグしません。回数の数字を書きかえます。',28:'入れる場所：「70回繰り返す」の内側。',29:'今回はドラッグしません。「10」を「-5」に書きかえます。',30:'今回は探すだけ。次のステップで運びます。',31:'入れる場所：「70回繰り返す」の内側、青いブロックの下。',32:'今回はドラッグしません。新しく入れた待ち時間を書きかえます。',33:'今回は探すだけ。次のステップで運びます。',34:'つなぐ場所：「70回繰り返す」の外側、いちばん下。',18:'いったん空いている場所へ置きます。',19:'今回はドラッグせず、左の数字を変更します。',20:'今回はドラッグせず、右の数字を変更します。',21:'入れる場所：青い位置ブロックのx座標の入力欄。yは170のまま。'};
-let picture=baseDiagram(lesson);
-if([4,5,8,14,15,17,19,20,26,29,30,32,33,43,45,46].includes(state.current))picture=picture.replace(/<path d="M280 188[\s\S]*?<text x="130" y="235"[\s\S]*?<\/text>/,'');
-return focus+(places[state.current]?'<div class="target-guide">'+places[state.current]+'</div>':'')+picture;
-};
+diagram=function(lesson){const color=categories[lesson[5]]?.[1]||'#147f99';let focus='';
+if(lesson[6]){let shape=block(lesson[6],color,12,12,565).replace('font-size="15"','font-size="21"').replace('y="23"','y="26"');if(['operators','sensing'].includes(lesson[5]))shape=hex(10,15,570,lesson[6],color,21);if(['y座標','ライフ'].includes(lesson[6]))shape=box(15,12,180,44,color)+txt(36,42,lesson[6],24);focus='<div class="block-focus"><p>左端の「'+categories[lesson[5]][0]+'」から、今回使うブロック</p><svg viewBox="0 0 600 72" role="img" aria-label="'+lesson[6]+'">'+shape+'</svg></div>';}
+const category='<div class="category-label" style="border-left-color:'+color+'"><span style="background:'+color+'"></span>左端の「'+(categories[lesson[5]]?.[0]||'コード')+'」を使います。</div>';
+return (categories[lesson[5]]?category:'')+focus+baseDiagram(lesson);};
 const baseRender=render;
-render=function(focus=false){baseRender(focus);const messages={37:'ここから当たり判定。移動のかたまりはそのまま、新しく作ろう。',39:'同じコピーが「移動」と「当たったか調べる」を同時に進めるよ。',44:'六角形は条件。上の穴に入れる形だね。',48:'もしビームに触れたなら、そのUFOのコピーを消す。内側に入っているか確かめよう。',49:'撃たないときと、撃ったときの両方を試して比べよう。',0:'どのスプライトに命令を書くか、名前を見て確かめよう。',10:'1秒待ってから、次のコピー。出す間隔を決めているんだね。',11:'左のかたまりはコピーを作る係。右には、コピーの仕事を作るよ。',15:'上下の位置はy座標。まず上の170から出発しよう。',29:'ビームはプラスで上へ。UFOはマイナスで下へ！',32:'左の1秒は出す間隔。右の0.03秒は動きの速さ。役割が違うよ。',34:'下まで動いたらコピーを片づける。この順番を確かめよう。',35:'当たり判定はまだなくてOK。まず動きを1つ完成させよう。',36:'試し終わったら、赤い停止ボタンで止めよう。',21:'コピーが生まれるたびに、出発するx座標を選ぶよ。同じ場所が続くこともあるんだ。'};document.getElementById('coachMessage').textContent=messages[state.current]||'一度に1つで大丈夫。図と同じになったら「できた！」で次へ進もう。';};
-render();
+render=function(focus=false){baseRender(focus);const phase=lessons[state.current][0];const messages={'一定間隔で出す':'見本は「0.8秒待つ」が先、その後にコピーを作る順番だね。','条件を3つつなぐ':'「または」を2つ入れると、3つのどれかで移動を終えられるよ。','ライフを減らす':'ライフは「-1ずつ変える」。減らした後に0になったかを調べるよ。','ゲームオーバーを調べる':'小さいもしは、プレイヤー用のもしの内側。減らした後のライフを調べよう。','ビームが当たった後':'ビーム用のもしは、プレイヤー用のもしの外に並べるよ。','最後にコピーを消す':'得点やライフの処理をしてから、最後にコピーを消そう。'};document.getElementById('coachMessage').textContent=messages[phase]||'元の見本と同じ数字・条件・順番で、今の1操作を進めよう。';};render();
 
 </script></html>
